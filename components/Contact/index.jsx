@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import axios from "axios";
 import {
   Container,
   Flex,
@@ -99,21 +100,52 @@ const ContactMe = () => {
               lastname: "",
               number: "",
               email: "",
+              platform: "Melting-pot",
             }}
             validationSchema={validation}
             onSubmit={(values, helpers) => {
-              console.log(values);
-              toast({
-                position: "top",
-                title: "Message sent successfully",
-                status: "success",
-                duration: 10000,
-                isClosable: true,
-              });
+              axios
+                .post(
+                  "https://email-pot-jk.herokuapp.com/send/mailnormal",
+                  values
+                )
+                .then(() => {
+                  toast({
+                    position: "top",
+                    title: "Message sent successfully",
+                    status: "success",
+                    duration: 10000,
+                    isClosable: true,
+                  });
 
-              helpers.resetForm();
-              helpers.setSubmitting(false);
-              Router.push("/success");
+                  helpers.resetForm();
+                  helpers.setSubmitting(false);
+                  Router.push("/success");
+                })
+                .catch((error) => {
+                  let errorArray = [];
+                  errorArray.push(error);
+
+                  let message;
+                  if (errorArray.length !== 0 && errorArray[0].response) {
+                    message = errorArray[0].response.data;
+                  } else if (
+                    errorArray.length !== 0 &&
+                    !errorArray[0].response
+                  ) {
+                    message = errorArray[0].message;
+                  }
+                  toast({
+                    position: "top",
+                    title: message,
+                    status: "error",
+                    duration: 10000,
+                    isClosable: true,
+                  });
+
+                  helpers.resetForm();
+                  helpers.setSubmitting(false);
+                });
             }}
           >
             {({ errors, handleSubmit, touched }) => (

@@ -84,7 +84,7 @@ const SuccessComponent = () => {
               justifyContent="center"
             >
               <Text color="#000000" textAlign={{ base: "center" }}>
-                We have sent you an email confirmation on
+                We have sent an email confirmation on
               </Text>
               <Text color="#000000" textAlign={{ base: "center" }}>
                 joshuakimbareeba@gmail.com
@@ -109,12 +109,12 @@ const SuccessComponent = () => {
               </Button>
 
               <Box w="100%" display="flex" justifyContent="center" mt="20px">
-                <Box w="12px" h="13px" borderRadius="20px" bg="#5F5F5F" />
+                <Box w="12px" h="13px" borderRadius="20px" bg="#BABABA" />
                 <Box
                   w="12px"
                   h="13px"
                   borderRadius="20px"
-                  bg="#BABABA"
+                  bg="#5F5F5F"
                   ml="10px"
                 />
               </Box>
