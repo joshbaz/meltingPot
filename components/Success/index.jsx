@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import {
   Container,
   Flex,
@@ -7,7 +8,6 @@ import {
   Text,
   useToast,
   Box,
-  Image,
   Button,
   Link,
 } from "@chakra-ui/react";
@@ -51,7 +51,7 @@ const SuccessComponent = () => {
               className={""}
               height={"150px"}
               width={"150px"}
-              alt=""
+              alt="contact"
             />
           </Box>
           <VStack spacing={4} alignItems="center" w="100%">
@@ -71,7 +71,7 @@ const SuccessComponent = () => {
                 className={""}
                 height={"50px"}
                 width={"50px"}
-                alt=""
+                alt="success"
               />
             </Box>
             <Heading color="#000000" size="md" textAlign={{ base: "center" }}>

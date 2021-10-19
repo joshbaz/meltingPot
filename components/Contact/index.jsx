@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import {
   Container,
   Flex,
@@ -7,7 +8,6 @@ import {
   Text,
   useToast,
   Box,
-  Image,
 } from "@chakra-ui/react";
 import Router from "next/router";
 
@@ -81,7 +81,7 @@ const ContactMe = () => {
                 className={""}
                 height={"150px"}
                 width={"150px"}
-                alt=""
+                alt="contact"
                 display={{ base: "none", md: "none", lg: "none", xl: "flex" }}
               />
             </Box>
