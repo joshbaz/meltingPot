@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/Image";
+import Image from "next/image";
 import { BiMenuAltRight } from "react-icons/bi";
 
 import {
@@ -40,7 +40,7 @@ export default function Navigaion() {
             className={""}
             height={"156.16px"}
             width={"156.16px"}
-            alt=""
+            alt="logo"
           />
         </Box>
 
@@ -102,7 +102,6 @@ export default function Navigaion() {
       */}
       <Flex
         flex={{ base: 1, md: 1 }}
-       
         display={{ base: "flex", md: "flex", lg: "flex", xl: "none" }}
         w="full"
         alignItems="center"

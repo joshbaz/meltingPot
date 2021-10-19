@@ -83,7 +83,7 @@ const SuccessComponent = () => {
               justifyContent="center"
             >
               <Text color="#000000" textAlign={{ base: "center" }}>
-                We've sent you an email confirmation on
+                We have sent you an email confirmation on
               </Text>
               <Text color="#000000" textAlign={{ base: "center" }}>
                 joshuakimbareeba@gmail.com
