@@ -92,7 +92,10 @@ export default function Navigaion() {
             bg={"linear-gradient(140.92deg, #EAD270 14.94%, #F6E384 85.48%)"}
             borderRadius={"20px"}
           >
-            Innovate Now
+            <Link href="/contact" style={{ textDecoration: "none" }}>
+              {" "}
+              Innovate Now
+            </Link>
           </Button>
         </Stack>
       </Flex>

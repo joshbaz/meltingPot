@@ -10,9 +10,12 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
+import Link from "next/link";
 
 import NavBar from "../components/common/Navigation";
 export default function Home() {
+  const [isLargerThan629] = useMediaQuery("(min-height: 839px)");
   return (
     <Container
       h="100vh"
@@ -104,7 +107,7 @@ export default function Home() {
               borderRadius={"20px"}
               color="#1E140C"
             >
-              WORK WITH US
+              <Link href="/contact">WORK WITH US</Link>
             </Button>
           </Box>
 
@@ -186,13 +189,25 @@ export default function Home() {
           </Box>
 
           <Box
-            height={{ sm: "0", base: "130px", md: "0", xl: "34vh" }}
-            width={{ sm: "0", base: "130px", md: "0", xl: "18vw" }}
+            height={{
+              sm: "0",
+              base: "130px",
+              md: "0",
+              xl: isLargerThan629 ? "34vh" : "34vh",
+              "2xl": isLargerThan629 ? "34vh" : "34vh",
+            }}
+            width={{
+              sm: "0",
+              base: "130px",
+              md: "0",
+              xl: isLargerThan629 ? "34vh" : "34vh",
+              "2xl": isLargerThan629 ? "34vh" : "34vh",
+            }}
             bg="#EAD270"
             opacity={0.8}
             position="absolute"
-            bottom="8vh"
-            right="-1"
+            bottom={isLargerThan629 ? "2vh" : "8vh"}
+            right={isLargerThan629 ? "-4" : "-1"}
             transform={{ base: "rotate(-40deg)", xl: "rotate(39deg)" }}
             style={{
               clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
@@ -200,13 +215,25 @@ export default function Home() {
           />
 
           <Box
-            height={{ sm: "0", base: "90px", md: "0", xl: "23vh" }}
-            width={{ sm: "0", base: "90px", md: "0", xl: "12vw" }}
+            height={{
+              sm: "0",
+              base: "90px",
+              md: "0",
+              xl: isLargerThan629 ? "30vh" : "23vh",
+              "2xl": isLargerThan629 ? "30vh" : "23vh",
+            }}
+            width={{
+              sm: "0",
+              base: "90px",
+              md: "0",
+              xl: isLargerThan629 ? "30vh" : "23vh",
+              "2xl": isLargerThan629 ? "30vh" : "23vh",
+            }}
             bg="#EAD270"
             opacity={0.8}
             position="absolute"
-            top={{base:'98px', xl:"-55px"}}
-            left={{base:'-10vw',xl:"3vw"}}
+            top={{ base: "98px", xl: "-55px" }}
+            left={{ base: "-10vw", xl: "3vw" }}
             transform={{ base: "rotate(39deg)", xl: "rotate(37deg)" }}
             style={{
               clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",

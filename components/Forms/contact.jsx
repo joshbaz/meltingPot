@@ -11,19 +11,22 @@ import {
   Box,
   VisuallyHidden,
 } from "@chakra-ui/react";
-  import { BiRightArrowAlt } from "react-icons/bi";
+import { BiRightArrowAlt } from "react-icons/bi";
 
 const ContactForm = ({ errors, touched, submit, Field }) => {
   return (
     <Box as="form" onSubmit={submit} w="full" m="0">
       <SimpleGrid rowGap={2} w="full">
         <GridItem colSpan={1}>
-          <FormControl id="name" isInvalid={errors.name && touched.name}>
+          <FormControl
+            id="firstname"
+            isInvalid={errors.firstname && touched.firstname}
+          >
             <FormLabel>Firstname</FormLabel>
 
             <Field
               as={Input}
-              placeholder="Name"
+              placeholder="firstname"
               borderColor="#9A6649"
               borderWidth="1px"
               _active={{
@@ -36,7 +39,7 @@ const ContactForm = ({ errors, touched, submit, Field }) => {
               bg="rgba(255, 255, 255, 0.2)"
               color="#000000"
               type="text"
-              name="name"
+              name="firstname"
             />
 
             <FormErrorMessage>
@@ -46,22 +49,25 @@ const ContactForm = ({ errors, touched, submit, Field }) => {
         </GridItem>
 
         <GridItem colSpan={1}>
-          <FormControl isInvalid={errors.number && touched.number}>
+          <FormControl
+            id="lastname"
+            isInvalid={errors.lastname && touched.lastname}
+          >
             <FormLabel>Lastname</FormLabel>
 
             <Field
               as={Input}
               bg="rgba(255, 255, 255, 0.2)"
-              color="#ffffff"
+              color="#000000"
               borderWidth="1px"
               borderColor="#9A6649"
               placeholder="lastname"
               h={"40px"}
               type="text"
-              name="number"
+              name="lastname"
             />
             <FormErrorMessage>
-              {errors.number && touched.number && errors.number}
+              {errors.lastname && touched.lastname && errors.lastname}
             </FormErrorMessage>
           </FormControl>
         </GridItem>
@@ -73,7 +79,7 @@ const ContactForm = ({ errors, touched, submit, Field }) => {
             <Field
               as={Input}
               bg="rgba(255, 255, 255, 0.2)"
-              color="#ffffff"
+              color="#000000"
               borderWidth="1px"
               borderColor="#9A6649"
               placeholder="Email"
@@ -88,13 +94,13 @@ const ContactForm = ({ errors, touched, submit, Field }) => {
         </GridItem>
 
         <GridItem colSpan={1}>
-          <FormControl isInvalid={errors.number && touched.number}>
+          <FormControl id="number" isInvalid={errors.number && touched.number}>
             <FormLabel>Phone</FormLabel>
 
             <Field
               as={Input}
               bg="rgba(255, 255, 255, 0.2)"
-              color="#ffffff"
+              color="#000000"
               borderWidth="1px"
               borderColor="#9A6649"
               placeholder="Phone Number"
@@ -113,7 +119,7 @@ const ContactForm = ({ errors, touched, submit, Field }) => {
             <Button
               rightIcon={<BiRightArrowAlt />}
               bg="#F2E4A9"
-              color="black"
+              color="#000000"
               size="lg"
               width={["full", "full", "full", "full"]}
               align="center"

@@ -9,6 +9,7 @@ import {
   Box,
   Image,
   Button,
+  Link,
 } from "@chakra-ui/react";
 
 const SuccessComponent = () => {
@@ -102,7 +103,9 @@ const SuccessComponent = () => {
                 fontWeight="500"
                 type="submit"
               >
-                Back to website
+                <Link href="/" style={{ textDecoration: "none" }}>
+                  Back to website
+                </Link>
               </Button>
 
               <Box w="100%" display="flex" justifyContent="center" mt="20px">

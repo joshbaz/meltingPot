@@ -7,19 +7,25 @@ import {
   Text,
   useToast,
   Box,
-  Image
+  Image,
 } from "@chakra-ui/react";
+import Router from "next/router";
 
 import { Formik, Field } from "formik";
 import * as yup from "yup";
 import ContactForm from "../Forms/contact";
 
 const validation = yup.object().shape({
-  name: yup
+  firstname: yup
     .string()
     .min(3, "Must be more than 3 characters")
     .max(15, "Must be lass than 15 characters")
-    .required("Name is required"),
+    .required("First name is required"),
+  lastname: yup
+    .string()
+    .min(3, "Must be more than 3 characters")
+    .max(15, "Must be lass than 15 characters")
+    .required("Last name is required"),
 
   number: yup
     .string()
@@ -30,11 +36,6 @@ const validation = yup.object().shape({
     .string()
     .email("Invalid email address")
     .required("email is required"),
-  message: yup
-    .string()
-    .min(4, "Must be more than 4 characters")
-    .max(200, "Must be less than 15 characters")
-    .required("message is required"),
 });
 
 const ContactMe = () => {
@@ -56,7 +57,7 @@ const ContactMe = () => {
         <VStack
           w="full"
           h="full"
-          px={{base:7, md:28, xl:20}}
+          px={{ base: 7, md: 28, xl: 20 }}
           py="0"
           spacing={2}
           m="auto"
@@ -94,10 +95,10 @@ const ContactMe = () => {
 
           <Formik
             initialValues={{
-              name: "",
+              firstname: "",
+              lastname: "",
               number: "",
               email: "",
-              message: "",
             }}
             validationSchema={validation}
             onSubmit={(values, helpers) => {
@@ -106,12 +107,13 @@ const ContactMe = () => {
                 position: "top",
                 title: "Message sent successfully",
                 status: "success",
-                duration: 4000,
+                duration: 10000,
                 isClosable: true,
               });
-              console.log("helpers", helpers);
+
               helpers.resetForm();
               helpers.setSubmitting(false);
+              Router.push("/success");
             }}
           >
             {({ errors, handleSubmit, touched }) => (
