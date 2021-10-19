@@ -1,0 +1,134 @@
+import React from "react";
+import {
+  Container,
+  Flex,
+  VStack,
+  Heading,
+  Text,
+  useToast,
+  Box,
+  Image
+} from "@chakra-ui/react";
+
+import { Formik, Field } from "formik";
+import * as yup from "yup";
+import ContactForm from "../Forms/contact";
+
+const validation = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "Must be more than 3 characters")
+    .max(15, "Must be lass than 15 characters")
+    .required("Name is required"),
+
+  number: yup
+    .string()
+    .min(10, "Must be more than 9 digits")
+    .required("Number is required"),
+
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("email is required"),
+  message: yup
+    .string()
+    .min(4, "Must be more than 4 characters")
+    .max(200, "Must be less than 15 characters")
+    .required("message is required"),
+});
+
+const ContactMe = () => {
+  const toast = useToast();
+
+  return (
+    <Container
+      maxWidth="full"
+      w="full"
+      p={0}
+      m="0"
+      mr={0}
+      ml={0}
+      bg="#ffffff"
+      id="contactMe"
+      justifyContent="center"
+    >
+      <Flex h="100vh" py={0}>
+        <VStack
+          w="full"
+          h="full"
+          px={{base:7, md:28, xl:20}}
+          py="0"
+          spacing={2}
+          m="auto"
+          alignItems="flex-start"
+          justifyContent="center"
+        >
+          <VStack spacing={0} alignItems="flex-start" w="100%">
+            <Box
+              bg="transparent"
+              position="relative"
+              alignItems="center"
+              justifyContent="center"
+              objectFit="contain"
+              width="100%"
+              m="0"
+              p="0"
+              display={{ base: "none", md: "none", lg: "none", xl: "flex" }}
+            >
+              <Image
+                src="/images/logo-portraitContact.svg"
+                className={""}
+                height={"150px"}
+                width={"150px"}
+                alt=""
+                display={{ base: "none", md: "none", lg: "none", xl: "flex" }}
+              />
+            </Box>
+            <Heading color="#000000" size="lg">
+              Book a call with our team
+            </Heading>
+            <Text color="#000000">
+              Please enter your name and contact information
+            </Text>
+          </VStack>
+
+          <Formik
+            initialValues={{
+              name: "",
+              number: "",
+              email: "",
+              message: "",
+            }}
+            validationSchema={validation}
+            onSubmit={(values, helpers) => {
+              console.log(values);
+              toast({
+                position: "top",
+                title: "Message sent successfully",
+                status: "success",
+                duration: 4000,
+                isClosable: true,
+              });
+              console.log("helpers", helpers);
+              helpers.resetForm();
+              helpers.setSubmitting(false);
+            }}
+          >
+            {({ errors, handleSubmit, touched }) => (
+              <>
+                <ContactForm
+                  errors={errors}
+                  touched={touched}
+                  submit={handleSubmit}
+                  Field={Field}
+                />
+              </>
+            )}
+          </Formik>
+        </VStack>
+      </Flex>
+    </Container>
+  );
+};
+
+export default ContactMe;
